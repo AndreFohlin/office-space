@@ -1,14 +1,12 @@
-
-<div class="card" style="width: 18rem;">
+<div class="card">
   <div class="card-body">
     <h5 class="card-title">Ship</h5>
     <p class="card-text">
-      <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(10)" (click)="sendShip()">Send ship (10g)</button>
-      
+      <button type="button" class="btn btn-primary" *ngIf="!sailing"  [disabled]="!resources.hasGrog(10)" (click)="sendShip()">Plunder! (10grog)</button>
     </p>
     <div class="progress">
-        <div class="progress-bar progress-bar-striped" style="width:0%" role="progressbar" aria-valuenow="0"
+        <div class="progress-bar progress-bar-striped" id="pbar{{data.id}}" style="width:0%" role="progressbar" aria-valuenow="0"
           aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
+    </div>
   </div>
 </div>

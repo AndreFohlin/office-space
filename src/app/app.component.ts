@@ -36,10 +36,21 @@ export class AppComponent {
 
       this.jobs.addJob('Building a ship...', 2, (job:Job)=>{
         console.log('Job '+job.name+ ' is done!');
-        this.ships.push({});
+        this.ships.push({id:this.ships.length});
       });
+    }
+  }
 
+  buildBrewery() {
+    if(this.resources.getGold() >= 50) {
+      this.resources.addGold(-50);
 
+      this.jobs.addJob('Building a brewery...', 2, (job:Job)=>{
+        
+        this.resources.grogPerSec += 1;
+        console.log(this.resources.grogPerSec);
+      });
+      
     }
   }
 

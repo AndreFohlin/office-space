@@ -3,10 +3,10 @@
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">Resources</h5>
-      <p class="card-text">
-        Gold: {{resources.getGold()}}
-        Grog: {{resources.getGrog()}}
-      </p>
+      <div class="card-text border">
+        <p>Gold: {{resources.getGold()}} <small>(income/sec: {{resources.goldPerSec}})</small></p>
+        <p>Grog: {{resources.getGrog()}} <small>(income/sec: {{resources.grogPerSec}})</small></p>
+      </div>
     </div>
   </div>
 </div>

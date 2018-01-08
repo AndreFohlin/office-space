@@ -4,23 +4,36 @@
 
     </h1>
   </div>
+  <div class="row">
+    <div class="col-5">
+        <resources></resources>
+    </div>
+    <div class="col-5">
+        <h4>Build</h4>
+        <button type="button" class="btn btn-primary" (click)="addGold()">Add gold</button>
+        
+        <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build ship (50g)</button>
+        <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildBrewery()">Build brewery (50g)</button>
+    </div>
 
-  <resources></resources>
+    
+  </div>
 
-  <button type="button" class="btn btn-primary" (click)="addGold()">Add gold</button>
-
-  <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build ship (50g)</button>
-
-  <ul>
-    <li *ngFor="let ship of ships">
-      <app-ship></app-ship>
-    </li>
-  </ul>
-
-  <h4>Jobs</h4>
-  <ul>
-    <li *ngFor="let job of jobs.jobs">
-      <jobs [data]="job"></jobs>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-6">
+            
+              <app-ship *ngFor="let ship of ships" [data]="ship"></app-ship>
+            
+        
+    </div>
+    <div class="col-6">
+        <h4>Jobs</h4>
+        <ul>
+          <li *ngFor="let job of jobs.jobs">
+            <jobs [data]="job"></jobs>
+          </li>
+        </ul>
+    </div>
+    
+  </div>
 </div>

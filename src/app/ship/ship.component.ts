@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ResourceService } from '../resource.service';
 
 @Component({
@@ -6,27 +6,42 @@ import { ResourceService } from '../resource.service';
   templateUrl: './ship.component.html',
   styleUrls: ['./ship.component.css']
 })
-export class ShipComponent implements OnInit {
+export class ShipComponent {
 
   private resources: ResourceService;
-  
+
+  @Input()
+  data: any;
+
+  id:number;
+  sailing:boolean;
+
   constructor(resourceService:ResourceService){
     this.resources = resourceService;
   }
 
-  ngOnInit() {
-  }
 
   sendShip(){
     if(this.resources.getGold() >= 10) {
-      this.resources.addGold(-10);
+      this.resources.addGrog(-10);
       console.log('sending ship');
-      
+      this.sailing = true;
+      this.animateTo(100, 5);
+      setTimeout(()=>{
+        this.resources.addGold(100);
+        this.sailing = false;
+        let obj = document.getElementById("pbar"+this.data.id);
+        if(obj){
+          let style = ('width '+0+'s linear');
+          obj.style.webkitTransition = style;
+          obj.style.width = "0%";
+        }
+      }, 5000);
     }
   }
   
   animateTo(percent:number, time:number){
-    let obj = document.getElementById(this.data.id);
+    let obj = document.getElementById("pbar"+this.data.id);
     if(obj){
       let style = ('width '+time+'s linear');
       obj.style.webkitTransition = style;
@@ -34,5 +49,4 @@ export class ShipComponent implements OnInit {
       console.log(obj.style.webkitTransition);
     }
   }
-
 }

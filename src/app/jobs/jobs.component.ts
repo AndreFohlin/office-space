@@ -8,7 +8,7 @@ import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.css']
 })
-export class JobsComponent implements AfterViewInit, OnInit {
+export class JobsComponent implements AfterViewInit {
   
   jobs:JobService;
 
@@ -17,10 +17,6 @@ export class JobsComponent implements AfterViewInit, OnInit {
 
   constructor(private jobService: JobService) {
     this.jobs = jobService;
-  }
-
-  ngOnInit(){
-    
   }
 
   ngAfterViewInit(){
@@ -35,7 +31,6 @@ export class JobsComponent implements AfterViewInit, OnInit {
       let style = ('width '+time+'s linear');
       obj.style.webkitTransition = style;
       obj.style.width = percent+"%";
-      console.log(obj.style.webkitTransition);
     }
   }
 

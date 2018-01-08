@@ -2,13 +2,20 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ResourceService {
+  public goldPerSec: number = 1;
+  public grogPerSec: number = 0;
   private gold: number = 0;
   private grog: number = 0;
 
-  constructor() { }
+
+  constructor() {
+    setInterval(()=>{
+      this.gold += this.goldPerSec;
+      this.grog += this.grogPerSec;
+    }, 1000);
+  }
 
   addGold(gold: number) {
-    console.log('adding',gold);
     this.gold += gold;
   }
 
