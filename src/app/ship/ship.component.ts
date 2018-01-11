@@ -24,7 +24,6 @@ export class ShipComponent {
   sendShip(){
     if(this.resources.getGold() >= 10) {
       this.resources.addGrog(-10);
-      console.log('sending ship');
       this.sailing = true;
       this.animateTo(100, 5);
       setTimeout(()=>{
@@ -46,7 +45,6 @@ export class ShipComponent {
       let style = ('width '+time+'s linear');
       obj.style.webkitTransition = style;
       obj.style.width = percent+"%";
-      console.log(obj.style.webkitTransition);
     }
   }
 }
