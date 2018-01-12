@@ -19,5 +19,21 @@ export const Buildings = {
         effect: {
             gold: 1
         }
+    },
+    'touristcenter':{
+        name:'Tourist center',
+        desc:'Brings tourists',
+        requirements: {
+            gold: 150
+        }, 
+        effect: {
+        }
+    },
+    'shipyard': {
+        name: 'Ship yard',
+        desc: 'Unlocks ships',
+        requirements: {
+            gold: 150
+        }
     }
 };

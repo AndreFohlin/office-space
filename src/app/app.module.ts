@@ -6,6 +6,8 @@ import { ResourceService } from './resource.service';
 import { ShipComponent } from './ship/ship.component';
 import { JobService } from './job.service';
 import { JobsComponent } from './jobs/jobs.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -13,10 +15,12 @@ import { JobsComponent } from './jobs/jobs.component';
     AppComponent,
     ResourcesComponent,
     ShipComponent,
-    JobsComponent
+    JobsComponent,
+    NavigationComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [ResourceService, JobService],
   bootstrap: [AppComponent]

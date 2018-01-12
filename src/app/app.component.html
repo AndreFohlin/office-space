@@ -1,68 +1,78 @@
+<navigation></navigation>
 <div class="container-fluid">
-  <div style="text-align:center">
-    <h1>
-
-    </h1>
-  </div>
+  <router-outlet></router-outlet>
   <div class="row">
-    <div class="col-5">
+    <div class="col-4">
       <resources></resources>
     </div>
-    <div class="col-5">
-      <h4>Build</h4>
-      <div class="row">
-        <div class="col-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{{this.buildings.brewery.name}}</h5>
-              <p class="card-text">
-                {{this.buildings.brewery.desc}}
-              </p>
-              <button type="button" class="btn btn-primary" [disabled]="!canBuild('brewery')" (click)="build('brewery')">Build (50g)</button>
+    <div class="col-8">
+      <div class="buildings-container">
+        <h4>Buildings</h4>
+        <div class="row">
+          <div class="col-3">
+            <div class="card build-option building">
+              <div class="card-body">
+                <h5 class="card-title">{{this.buildings.brewery.name}}</h5>
+                <p class="card-text">
+                  {{this.buildings.brewery.desc}}
+                </p>
+                <button type="button" class="btn btn-primary" [disabled]="!canBuild('brewery')" (click)="build('brewery')">Build (50g)</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card build-option building">
+              <div class="card-body">
+                <h5 class="card-title">{{this.buildings.bar.name}}</h5>
+                <p class="card-text">
+                  {{this.buildings.bar.desc}}
+                </p>
+                <button type="button" class="btn btn-primary" [disabled]="!canBuild('bar')" (click)="build('bar')">Build (50g)</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card build-option building">
+              <div class="card-body">
+                <h5 class="card-title">{{this.buildings.touristcenter.name}}</h5>
+                <p class="card-text">
+                  {{this.buildings.touristcenter.desc}}
+                </p>
+                <button type="button" class="btn btn-primary" [disabled]="!canBuild('touristcenter')" (click)="build('touristcenter')">Build (150g)</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card build-option building">
+              <div class="card-body">
+                <h5 class="card-title">{{this.buildings.shipyard.name}}</h5>
+                <p class="card-text">
+                  {{this.buildings.shipyard.desc}}
+                </p>
+                <button type="button" class="btn btn-primary" [disabled]="!canBuild('shipyard')" (click)="build('shipyard')">Build (50g)</button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-3">
-            <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">{{this.buildings.bar.name}}</h5>
-                  <p class="card-text">
-                    {{this.buildings.bar.desc}}
-                  </p>
-                  <button type="button" class="btn btn-primary" [disabled]="!canBuild('bar')" (click)="build('bar')">Build (50g)</button>
-                </div>
+      </div>
+      <div class="ship-container" *ngIf="hasBuilding('shipyard')">
+        <h4>Ships</h4>
+        <div class="row">
+          <div class="col-3">
+            <div class="card build-option ship">
+              <div class="card-body">
+                <h5 class="card-title">Brig</h5>
+                <p class="card-text">
+                  A ship used for "trading"
+                </p>
+                <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build (50g)</button>
               </div>
-              
-              
-        </div>
-        <div class="col-3">
-          <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildBrewery()">Build tourist center(50g)</button>
-        </div>
-        <div class="col-3">
-
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-
-        <div class="col-3">
-          <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build ship (50g)</button>
-        </div>
-        <div class="col-3">
-          <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build ship (50g)</button>
-        </div>
-        <div class="col-3">
-          <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build ship (50g)</button>
-        </div>
-        <div class="col-3">
-          <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build ship (50g)</button>
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary" (click)="addGold()">Add gold</button>
-
-
+      <button type="button" class="btn btn-primary" (click)="addGold()">50 Gold</button>
     </div>
-
-
   </div>
 
   <div class="row">

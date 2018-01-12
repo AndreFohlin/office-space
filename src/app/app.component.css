@@ -1,0 +1,12 @@
+.ship-container, .buildings-container{
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.build-option.building {
+    background-color: aliceblue;
+}
+
+.build-option.ship {
+    background-color: cornsilk;
+}
