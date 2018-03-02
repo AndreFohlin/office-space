@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ResourceService } from '../resource.service';
+import { ResourceService } from '../resources/resource.service';
 
 @Component({
   selector: 'app-ship',

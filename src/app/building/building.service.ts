@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ResourceService } from '../resource.service';
+import { ResourceService } from '../resources/resource.service';
 import { Buildings } from './buildings/buildings';
 import { JobService } from '../job.service';
 import { Job } from '../job';

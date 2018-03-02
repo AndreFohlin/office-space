@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { Resources } from './resources/resources';
+import { Resources } from './resources';
 
 @Injectable()
 export class ResourceService {

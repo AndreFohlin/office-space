@@ -4,7 +4,7 @@ import {
 import {
   Destinations
 } from './destinations/destinations';
-import { ResourceService } from './resource.service';
+import { ResourceService } from './resources/resource.service';
 
 class Destination {
   public id: number;

@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import {
   ResourceService
-} from '../../resource.service';
+} from '../../resources/resource.service';
 import {
   JobService
 } from '../../job.service';
