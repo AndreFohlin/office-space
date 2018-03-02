@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShipService } from '../ship.service';
 
 @Component({
   selector: 'navigation',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  private shipService: ShipService;
+
+  constructor(shipService: ShipService) {
+    this.shipService = shipService;
+  }
 
   ngOnInit() {
   }

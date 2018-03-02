@@ -8,6 +8,13 @@ import { JobService } from './job.service';
 import { JobsComponent } from './jobs/jobs.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { BuildingComponent } from './building/building.component';
+import { BuildingService } from './building/building.service';
+import { DestinationService } from './destination.service';
+import { ShipService } from './ship.service';
+
+import { ShipsComponent } from './views/ships/ships.component';
+import { BuildingsComponent } from './views/buildings/buildings.component';
 
 
 @NgModule({
@@ -16,13 +23,20 @@ import { AppRoutingModule } from './/app-routing.module';
     ResourcesComponent,
     ShipComponent,
     JobsComponent,
-    NavigationComponent
+    NavigationComponent,
+    BuildingComponent,
+    ShipsComponent,
+    BuildingsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ResourceService, JobService],
+  providers: [ResourceService, 
+              JobService, 
+              BuildingService, 
+              DestinationService,
+              ShipService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

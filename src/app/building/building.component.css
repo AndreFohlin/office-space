@@ -1,0 +1,12 @@
+.building {
+    margin: 10px;
+    min-width: 300px;
+}
+.built {
+    background-color: green;
+}
+
+.requirements {
+    color: red;
+    font-style: italic;
+}

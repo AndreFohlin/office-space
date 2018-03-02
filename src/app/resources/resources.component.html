@@ -1,13 +1,9 @@
-<div>
-  
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Resources</h5>
-      <div class="card-text border">
-        <p>Gold: {{resources.getGold()}} <small>(income/sec: {{resources.goldPerSec}})</small></p>
-        <p>Grog: {{resources.getGrog()}} <small>(income/sec: {{resources.grogPerSec}})</small></p>
-      </div>
+<div class="card resources">
+  <div class="card-body">
+    <h5 class="card-title">Resources</h5>
+    <div class="card-text border">
+      <p>Gold: {{resources.getGold()}}/{{resources.goldLimit}} <small>(income/sec: {{resources.goldPerSec}})</small></p>
+      <p>Grog: {{resources.getGrog()}}/{{resources.grogLimit}} <small>(income/sec: {{resources.grogPerSec}})</small></p>
     </div>
   </div>
 </div>
-

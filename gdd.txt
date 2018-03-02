@@ -1,0 +1,22 @@
+Office space design document
+
+The most gold wins. balance fuel and production to get the highest amount of gold in the end. 
+Shipping and trading. Core mechanic, complements the base building with gold and grog production.
+Gold is only available from trading.
+Send ship to target harbor, loads and unloads automatically. how to trade: If you have an available ship, a destination and enough grog for the trip you can open a trade route.
+Destinations can be discovered by sending out scouts / unlocks automatically when you have accumulated enough gold (kind of likes this better)
+
+
+Playtime: 15 min rounds
+
+Resources:
+- gold: end game scoring is mainly based on how much gold you have. used for building and upgrading buildings.
+- grog: used for operating buildings and ships
+
+Buildings:
+- production: Brewery, Mine,
+    - upgrades: quicker production rate, higher max limit
+    
+- converters: Bar(grog to gold), Grog importer(gold to grog) 
+
+

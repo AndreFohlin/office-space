@@ -1,0 +1,10 @@
+<div class="card build-option building" id="building-{{template.id}}">
+  <div class="card-body">
+    <h5 class="card-title">{{template.name}} <span class="badge badge-warning">{{template.requirements.gold}}g</span></h5>
+    <p class="card-text">
+      {{template.desc}}<br>
+      <small class="requirements" *ngIf="!requirementsMet()">{{getRequirementText()}}</small>
+    </p>
+    <button type="button" class="btn btn-primary" *ngIf="requirementsMet()" (click)="onBuild()">Build</button>
+  </div>
+</div>

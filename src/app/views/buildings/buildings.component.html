@@ -1,0 +1,27 @@
+<div class="col-sm-12">
+  <div class="buildings-container">
+    <h4>Buildings</h4>
+    <div class="row">
+      <div *ngFor="let building of buildings">
+        <app-building [template]="building"></app-building>
+      </div>
+    </div>
+  </div>
+  <div class="ship-container" *ngIf="buildingService.hasBuilding(4)">
+    <h4>Ships</h4>
+    <div class="row">
+      <div class="col-3">
+        <div class="card build-option ship">
+          <div class="card-body">
+            <h5 class="card-title">Brig</h5>
+            <p class="card-text">
+              A ship used for "trading"
+            </p>
+            <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build (50g)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="addGold()">50 Gold</button>
+</div>
