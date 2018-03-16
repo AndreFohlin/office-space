@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
+
 import { ResourceService } from '../resources/resource.service';
+
 import { Buildings } from './buildings/buildings';
 import { JobService } from '../job.service';
 import { Job } from '../job';
+import { NotificationService } from '../services/notification.service';
 
 @Injectable()
 export class BuildingService {
 
   private resourceService: ResourceService;
   private jobService: JobService;
-  
-
   private ownedBuildings: number[];
+  private unlockedFeatures: any[];
 
-  constructor(resourceService: ResourceService, jobService: JobService) { 
+  private notificationService: NotificationService;
+
+  constructor(resourceService: ResourceService, jobService: JobService, notificationService: NotificationService) { 
     this.resourceService = resourceService;
     this.jobService = jobService;
+    this.notificationService = notificationService;
     this.ownedBuildings = [];
+    this.unlockedFeatures = [];
   }
 
   build(buildTemplate): any {
@@ -34,11 +40,23 @@ export class BuildingService {
               if (buildTemplate.effect.grogLimit) this.resourceService.grogLimit += buildTemplate.effect.grogLimit;
             }
 
+            if(buildTemplate.unlocks) {
+              buildTemplate.unlocks.forEach( unlock => {
+
+                this.unlockedFeatures.push(unlock);
+
+                this.notificationService.addNotification({
+                  type: 'info',
+                  heading: unlock+' unlocked!',
+                  msg: '',
+                  dismissable: true,
+                  timeout: 5000
+                });
+              });
+            }
+
             this.ownedBuildings.push(buildTemplate.id);
             
-            if (buildTemplate.restricted) {
-
-            }
           });
         }
       }
@@ -80,5 +98,9 @@ export class BuildingService {
 
   getAllBuildings(){
     return Buildings;
+  }
+
+  hasFeature(feature): boolean {
+    return this.unlockedFeatures.includes(feature);
   }
 }

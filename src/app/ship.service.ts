@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Ship } from './ship/ship.model';
 
 @Injectable()
 export class ShipService {
@@ -7,6 +8,7 @@ export class ShipService {
 
   constructor() { 
     this.ships = [];
+    this.createShip();
   }
 
   public getInactiveShips(): number {
@@ -15,9 +17,7 @@ export class ShipService {
   }
 
   public createShip() {
-    this.ships.push({
-      active: false,
-      id: this.ships.length
-    });
+    let ship = new Ship(this.ships.length);
+    this.ships.push(ship);
   }
 }

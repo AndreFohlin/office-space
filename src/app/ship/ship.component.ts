@@ -22,7 +22,7 @@ export class ShipComponent {
 
 
   sendShip(){
-    if(this.resources.getGold() >= 10) {
+    if(this.resources.getGrog() >= 10) {
       this.resources.addGrog(-10);
       this.sailing = true;
       this.animateTo(100, 5);

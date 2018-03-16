@@ -15,8 +15,8 @@ export class ResourceService {
   public grogObservable: Observable<number>;
   private grogSubject: Subject<number>;
 
-  private gold: number = 40;
-  private grog: number = 0;
+  private gold: number = 100;
+  private grog: number = 100;
 
   public goldLimit: number = 1000;
   public grogLimit: number = 100;

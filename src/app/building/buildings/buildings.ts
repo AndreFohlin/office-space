@@ -33,8 +33,7 @@ export const Buildings = [{
     },
     effect: {
       grogLimit: 100
-    },
-    restricted: true
+    }
   },
   {
     id: 4,
@@ -43,6 +42,19 @@ export const Buildings = [{
     requirements: {
       gold: 150,
       restricted: true
-    }
+    },
+    unlocks: ["Seafaring"]
+  },
+  {
+    id: 5,
+    name: 'Trading house',
+    desc: 'Unlocks trade agreements',
+    requirements: {
+      gold: 50,
+      restricted: true
+    },
+    effect: {
+    },
+    unlocks: ["Trade agreements"]
   }
 ];

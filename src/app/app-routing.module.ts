@@ -6,9 +6,10 @@ import { ShipsComponent } from './views/ships/ships.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/buildings', pathMatch: 'full'},
   { path: 'ships', component: ShipsComponent },
   { path: 'buildings', component: BuildingsComponent },
-  { path: '', redirectTo: '/buildings', pathMatch: 'full'}
+  { path: 'explore', redirectTo: '/buildings'}
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

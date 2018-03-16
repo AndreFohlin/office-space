@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AlertModule } from 'ngx-bootstrap/alert';
 import { AppComponent } from './app.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { ResourceService } from './resources/resource.service';
@@ -12,6 +13,7 @@ import { BuildingComponent } from './building/building.component';
 import { BuildingService } from './building/building.service';
 import { DestinationService } from './destination.service';
 import { ShipService } from './ship.service';
+import { NotificationService } from './services/notification.service';
 
 import { ShipsComponent } from './views/ships/ships.component';
 import { BuildingsComponent } from './views/buildings/buildings.component';
@@ -30,13 +32,15 @@ import { BuildingsComponent } from './views/buildings/buildings.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AlertModule.forRoot()
   ],
   providers: [ResourceService, 
               JobService, 
               BuildingService, 
               DestinationService,
-              ShipService],
+              ShipService,
+              NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

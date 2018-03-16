@@ -7,21 +7,30 @@
       </div>
     </div>
   </div>
-  <div class="ship-container" *ngIf="buildingService.hasBuilding(4)">
+  <div class="ship-container" *ngIf="buildingService.hasFeature('Seafaring')">
     <h4>Ships</h4>
     <div class="row">
       <div class="col-3">
         <div class="card build-option ship">
           <div class="card-body">
-            <h5 class="card-title">Brig</h5>
+            <h5 class="card-title">Brig <span class="badge badge-warning">50g</span></h5>
             <p class="card-text">
               A ship used for "trading"
             </p>
-            <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build (50g)</button>
+            <button type="button" class="btn btn-primary" [disabled]="!resources.hasGold(50)" (click)="buildShip()">Build</button>
           </div>
         </div>
       </div>
     </div>
   </div>
   <button type="button" class="btn btn-primary" (click)="addGold()">50 Gold</button>
+
+  
+  <div *ngFor="let alert of notificationService.alerts">
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="alert.dismissable">
+      <h4 class="alert-heading">{{alert.heading}}</h4>
+      <p>{{ alert.msg }}</p>
+    </alert>
+  </div>
+  
 </div>
