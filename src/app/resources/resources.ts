@@ -1,23 +1,23 @@
 export const Resources = [    
     {
-        name: 'Sugar'
+        name: '🍺'
     },
     {
-        name: 'Chickens'
+        name: '🐔'
     },
     {
-        name: 'Grease'
+        name: '🛢️'
     },
     {
-        name: 'Fish'
+        name: '🐟'
     },
     {
-        name: 'Fruit'
+        name: '🍌'
     },
     {
-        name: 'Iron'
+        name: '👚'
     },
     {
-        name: 'Cloth'
+        name: '🐒'
     }
 ];

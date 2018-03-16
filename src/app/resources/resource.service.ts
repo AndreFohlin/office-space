@@ -15,11 +15,10 @@ export class ResourceService {
   public grogObservable: Observable<number>;
   private grogSubject: Subject<number>;
 
-  private gold: number = 100;
-  private grog: number = 100;
+  private gold: number = 0;
+  private grog: number = 0;
 
-  public goldLimit: number = 1000;
-  public grogLimit: number = 100;
+  public grogLimit: number = 0;
 
 
   constructor() {
@@ -42,9 +41,9 @@ export class ResourceService {
 
   addGold(g: number) {
     this.gold += g;
-    if(Math.min(this.gold, this.goldLimit) == this.goldLimit) {
-      this.gold = this.goldLimit;
-    }
+    //if(Math.min(this.gold, this.goldLimit) == this.goldLimit) {
+    //  this.gold = this.goldLimit;
+    //}
     
     this.goldSubject.next(this.gold);
   }

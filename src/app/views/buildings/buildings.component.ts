@@ -19,7 +19,7 @@ import {
 import {
   OnInit
 } from '@angular/core/src/metadata/lifecycle_hooks';
-import { ShipService } from '../../ship.service';
+import { ShipService } from '../../services/ship.service';
 import { NotificationService } from '../../services/notification.service';
 
 

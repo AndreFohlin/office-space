@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShipService } from '../../ship.service';
+import { ShipService } from '../../services/ship.service';
 
 @Component({
   selector: 'app-ships',

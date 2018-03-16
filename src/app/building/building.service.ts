@@ -36,7 +36,7 @@ export class BuildingService {
             if (buildTemplate.effect) {
               if (buildTemplate.effect.gold) this.resourceService.goldPerSec += buildTemplate.effect.gold;
               if (buildTemplate.effect.grog) this.resourceService.grogPerSec += buildTemplate.effect.grog;
-              if (buildTemplate.effect.goldLimit) this.resourceService.goldLimit += buildTemplate.effect.goldLimit;
+              //if (buildTemplate.effect.goldLimit) this.resourceService.goldLimit += buildTemplate.effect.goldLimit;
               if (buildTemplate.effect.grogLimit) this.resourceService.grogLimit += buildTemplate.effect.grogLimit;
             }
 

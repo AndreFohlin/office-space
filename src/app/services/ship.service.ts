@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Ship } from './ship/ship.model';
+import { Ship } from '../ship/ship.model';
 
 @Injectable()
 export class ShipService {

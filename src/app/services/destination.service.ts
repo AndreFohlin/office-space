@@ -5,6 +5,7 @@ import {
   Destinations
 } from '../destinations/destinations';
 import { ResourceService } from '../resources/resource.service';
+import { NotificationService } from './notification.service';
 
 class Destination {
   public id: number;
@@ -29,10 +30,12 @@ class Destination {
 export class DestinationService {
 
   private resourceService: ResourceService;
+  private notificationService: NotificationService;
   public discoveredDestinations: Array < Destination > ;
 
-  constructor(resourceService: ResourceService) {
+  constructor(resourceService: ResourceService, notificationService: NotificationService) {
     this.resourceService = resourceService;
+    this.notificationService = notificationService;
     this.discoveredDestinations = new Array < Destination > ();
   }
 
@@ -45,6 +48,14 @@ export class DestinationService {
         destination.inDemand.push(this.resourceService.getRandomTradingResource());
       }while(destination.inDemand[0].name == destination.provides[0].name)
       
+      this.notificationService.addNotification({
+        type: 'success',
+        heading: 'Location discovered: '+ destination.name,
+        msg: 'Send ships to locations to earn more 🌟 gold',
+        dismissable: true,
+        timeout: 5000
+      });
+
       this.discoveredDestinations.push(
         destination
       );

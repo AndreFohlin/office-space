@@ -1,6 +1,7 @@
 .building {
     margin: 10px;
     min-width: 300px;
+    min-height: 155px;
 }
 .built {
     background-color: green;

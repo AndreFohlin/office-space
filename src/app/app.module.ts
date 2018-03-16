@@ -12,7 +12,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { BuildingComponent } from './building/building.component';
 import { BuildingService } from './building/building.service';
 import { DestinationService } from './services/destination.service';
-import { ShipService } from './ship.service';
+import { ShipService } from './services/ship.service';
 import { NotificationService } from './services/notification.service';
 
 import { ShipsComponent } from './views/ships/ships.component';
