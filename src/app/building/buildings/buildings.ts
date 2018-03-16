@@ -43,7 +43,7 @@ export const Buildings = [{
       gold: 150,
       restricted: true
     },
-    unlocks: ["Seafaring"]
+    unlocks: [{name: 'Seafaring', description: 'You can now build trading ships and send them on adventures!'}]
   },
   {
     id: 5,
@@ -55,6 +55,6 @@ export const Buildings = [{
     },
     effect: {
     },
-    unlocks: ["Trade agreements"]
+    unlocks: [{name: 'Trade agreements', description: 'Discovered locations can now be traded with using your ships.'}]
   }
 ];

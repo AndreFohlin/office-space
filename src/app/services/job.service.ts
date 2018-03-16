@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Job } from './job';
+import { Job } from '../job';
 import { animate } from '@angular/animations';
 
 @Injectable()

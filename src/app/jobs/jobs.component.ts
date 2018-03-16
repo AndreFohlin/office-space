@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { JobService } from '../job.service';
+import { JobService } from '../services/job.service';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 

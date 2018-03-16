@@ -1,8 +1,8 @@
 import {
   Component
 } from '@angular/core';
-import { JobService } from './job.service';
-import { DestinationService } from './destination.service';
+import { JobService } from './services/job.service';
+import { DestinationService } from './services/destination.service';
 
 @Component({
   selector: 'app-root',

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ResourceService } from '../resources/resource.service';
 
 import { Buildings } from './buildings/buildings';
-import { JobService } from '../job.service';
+import { JobService } from '../services/job.service';
 import { Job } from '../job';
 import { NotificationService } from '../services/notification.service';
 
@@ -41,22 +41,20 @@ export class BuildingService {
             }
 
             if(buildTemplate.unlocks) {
-              buildTemplate.unlocks.forEach( unlock => {
+              buildTemplate.unlocks.forEach( feature => {
 
-                this.unlockedFeatures.push(unlock);
+                this.unlockedFeatures.push(feature.name);
 
                 this.notificationService.addNotification({
                   type: 'info',
-                  heading: unlock+' unlocked!',
-                  msg: '',
+                  heading: feature.name+' unlocked!',
+                  msg: feature.description,
                   dismissable: true,
                   timeout: 5000
                 });
               });
             }
-
             this.ownedBuildings.push(buildTemplate.id);
-            
           });
         }
       }

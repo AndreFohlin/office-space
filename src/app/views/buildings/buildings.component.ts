@@ -6,7 +6,7 @@ import {
 } from '../../resources/resource.service';
 import {
   JobService
-} from '../../job.service';
+} from '../../services/job.service';
 import {
   Job
 } from '../../job';
@@ -15,7 +15,7 @@ import {
 } from '../../building/building.service';
 import {
   DestinationService
-} from '../../destination.service';
+} from '../../services/destination.service';
 import {
   OnInit
 } from '@angular/core/src/metadata/lifecycle_hooks';

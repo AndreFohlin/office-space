@@ -3,8 +3,8 @@ import {
 } from '@angular/core';
 import {
   Destinations
-} from './destinations/destinations';
-import { ResourceService } from './resources/resource.service';
+} from '../destinations/destinations';
+import { ResourceService } from '../resources/resource.service';
 
 class Destination {
   public id: number;
