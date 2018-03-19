@@ -1,4 +1,11 @@
-<div class="col-12">
-  <h4 *ngIf="shipService.ships.length == 0">You don't have any ships yet</h4>
-  <app-ship *ngFor="let ship of shipService.ships" [data]="ship"></app-ship>
+<div class="col-sm-12">
+  <div class="ships-container">
+    <h4>Ships</h4>
+    <div class="row">
+      <div class="col-12">
+        <h4 *ngIf="shipService.ships.length == 0">You don't have any ships yet</h4>
+        <app-ship *ngFor="let ship of shipService.ships" [data]="ship"></app-ship>
+      </div>
+    </div>
+  </div>
 </div>

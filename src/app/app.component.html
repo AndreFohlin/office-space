@@ -7,8 +7,10 @@
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let destination of destinationService.discoveredDestinations">
           <p>Name: {{destination.name}}</p>
-          <p>Provides: {{destination.provides[0].name}}</p>
-          <p>In demand: {{destination.inDemand[0].name}}</p>
+          <div *ngIf="buildingService.hasBuilding(5)">
+              <p>Provides: {{destination.provides[0].name}}</p>
+              <p>In demand: {{destination.inDemand[0].name}}</p>
+          </div>
         </li>
       </ul>
     </div>
@@ -19,6 +21,8 @@
     </div>
   </div>
 </div>
+<app-notifications></app-notifications>
+
 <nav class="navbar fixed-bottom navbar-light bg-light" *ngIf="jobService.getJobs().length > 0">
   <div class="col-sm-12">
     <h4>Jobs</h4>

@@ -1,0 +1,6 @@
+<div *ngFor="let alert of notificationService.alerts">
+  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="alert.dismissable" (onClosed)="onClosed(alert)">
+    <h4 class="alert-heading">{{alert.heading}}</h4>
+    <p>{{ alert.msg }}</p>
+  </alert>
+</div>

@@ -12,7 +12,7 @@ import {
 } from '../../job';
 import {
   BuildingService
-} from '../../building/building.service';
+} from '../../services/building.service';
 import {
   DestinationService
 } from '../../services/destination.service';
@@ -59,10 +59,6 @@ export class BuildingsComponent implements OnInit {
     // Discover new trading destinations
     this.destinationService.gotNewDestination(gold);
     
-  }
-
-  addGold() {
-    this.resources.addGold(50);
   }
 
   buildShip() {

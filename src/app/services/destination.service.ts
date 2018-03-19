@@ -51,7 +51,7 @@ export class DestinationService {
       this.notificationService.addNotification({
         type: 'success',
         heading: 'Location discovered: '+ destination.name,
-        msg: 'Send ships to locations to earn more 🌟 gold',
+        msg: 'Send ships to locations to earn more 💰 gold',
         dismissable: true,
         timeout: 5000
       });

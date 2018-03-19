@@ -3,6 +3,7 @@ import {
 } from '@angular/core';
 import { JobService } from './services/job.service';
 import { DestinationService } from './services/destination.service';
+import { BuildingService } from './services/building.service';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,13 @@ import { DestinationService } from './services/destination.service';
 export class AppComponent {
   private jobService: JobService;
   private destinationService: DestinationService;
+  private buildingService: BuildingService;
 
-  constructor(jobService: JobService, destinationService: DestinationService) {
+  constructor(jobService: JobService, destinationService: DestinationService, buildingService: BuildingService) {
     console.log("app init");
     this.jobService = jobService;
-    this.destinationService = destinationService
+    this.destinationService = destinationService;
+    this.buildingService = buildingService;
   }
 
 }

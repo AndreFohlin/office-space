@@ -15,6 +15,9 @@ export class ShipComponent {
 
   id:number;
   sailing:boolean;
+  sailTime: number = 3;
+  sailGrogPrice: number = 10;
+  sailGoldReward: number = 100;
 
   constructor(resourceService:ResourceService){
     this.resources = resourceService;
@@ -22,20 +25,25 @@ export class ShipComponent {
 
 
   sendShip(){
-    if(this.resources.getGrog() >= 10) {
-      this.resources.addGrog(-10);
+    if(this.resources.getGrog() >= this.sailGrogPrice) {
+      this.resources.addGrog(-this.sailGrogPrice);
+      this.animateTo(100, this.sailTime);
       this.sailing = true;
-      this.animateTo(100, 5);
-      setTimeout(()=>{
-        this.resources.addGold(100);
-        this.sailing = false;
-        let obj = document.getElementById("pbar"+this.data.id);
-        if(obj){
-          let style = ('width '+0+'s linear');
-          obj.style.webkitTransition = style;
-          obj.style.width = "0%";
-        }
-      }, 5000);
+      
+      setTimeout(()=> {
+        this.shipCameBack();
+      }, this.sailTime * 1000);
+    }
+  }
+
+  shipCameBack() {
+    this.sailing = false;
+    this.resources.addGold(this.sailGoldReward);
+    
+    let obj = document.getElementById("pbar"+this.data.id);
+    if(obj){
+      obj.style.webkitTransition = 'width 0s linear';
+      obj.style.width = "0%";
     }
   }
   

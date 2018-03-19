@@ -1,8 +1,5 @@
 export const Resources = [    
     {
-        name: '🍺'
-    },
-    {
         name: '🐔'
     },
     {

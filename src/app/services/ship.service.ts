@@ -8,7 +8,7 @@ export class ShipService {
 
   constructor() { 
     this.ships = [];
-    this.createShip();
+    //this.createShip();
   }
 
   public getInactiveShips(): number {

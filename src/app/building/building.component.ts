@@ -5,10 +5,10 @@ import {
 } from '@angular/core';
 import {
   Buildings
-} from './buildings/buildings';
+} from './buildings/building-templates';
 import {
   BuildingService
-} from './building.service';
+} from '../services/building.service';
 
 @Component({
   selector: 'app-building',
@@ -21,6 +21,9 @@ export class BuildingComponent implements OnInit {
   @Input() disabled: boolean;
 
   private buildingService: BuildingService;
+  private building: boolean;
+  private built: boolean;
+
 
   constructor(buildingService: BuildingService) {
     this.buildingService = buildingService;
@@ -30,6 +33,7 @@ export class BuildingComponent implements OnInit {
 
   onBuild() {
     this.buildingService.build(this.template);
+    this.built = true;
   }
 
   requirementsMet() {

@@ -10,13 +10,14 @@ import { JobsComponent } from './jobs/jobs.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { BuildingComponent } from './building/building.component';
-import { BuildingService } from './building/building.service';
+import { BuildingService } from './services/building.service';
 import { DestinationService } from './services/destination.service';
 import { ShipService } from './services/ship.service';
 import { NotificationService } from './services/notification.service';
 
 import { ShipsComponent } from './views/ships/ships.component';
 import { BuildingsComponent } from './views/buildings/buildings.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { BuildingsComponent } from './views/buildings/buildings.component';
     NavigationComponent,
     BuildingComponent,
     ShipsComponent,
-    BuildingsComponent
+    BuildingsComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

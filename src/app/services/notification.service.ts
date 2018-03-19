@@ -12,8 +12,7 @@ export class NotificationService {
     this.alerts.push(notification);
   }
 
-  onClosed(dismissedAlert: any) {
+  removeNotification(dismissedAlert: any) {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
-  
   }
 }

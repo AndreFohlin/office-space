@@ -18,7 +18,10 @@ export class ResourceService {
   private gold: number = 0;
   private grog: number = 0;
 
-  public grogLimit: number = 0;
+  public grogLimit: number = 10;
+
+  //Temporary
+  public miscResources: any[] = [];
 
 
   constructor() {
@@ -28,6 +31,12 @@ export class ResourceService {
 
     this.grogSubject = new Subject<number>();
     this.grogObservable = this.grogSubject.asObservable();
+
+    Resources.forEach( resourceType => {
+      this.miscResources.push({name: resourceType.name, amount: 0});
+    });
+
+    
 
     setInterval(()=>{
       this.updateResources();

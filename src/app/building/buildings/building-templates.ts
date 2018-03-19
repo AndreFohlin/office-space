@@ -1,10 +1,10 @@
 export const Buildings = [{
     id: 1,
     name: 'Brewery',
-    desc: 'Grog producing building',
+    desc: 'Increases 🍺 production by 1',
     requirements: {
       gold: 20,
-      restricted: true
+      restricted: false
     },
     effect: {
       grog: 1
@@ -12,27 +12,28 @@ export const Buildings = [{
   },
   {
     id: 2,
-    name: 'Grog bar',
-    desc: 'Convert grog into gold',
-    requirements: {
-      gold: 50,
-      buildings: [1,3],
-      restricted: true
-    },
-    effect: {
-      gold: 1
-    }
-  },
-  {
-    id: 3,
     name: 'Grog warehouse',
-    desc: 'Increase grog storage',
+    desc: 'Increase the 🍺 limit by 100',
     requirements: {
       gold: 50,
       restricted: false
     },
     effect: {
       grogLimit: 100
+    }
+  },
+  {
+    id: 3,
+    name: 'Grog bar',
+    desc: 'Converts 🍺 to 💰',
+    requirements: {
+      gold: 50,
+      buildings: [1,2],
+      restricted: true //Can only be built once
+    },
+    effect: {
+      gold: 1,
+      grog: -1
     }
   },
   {
@@ -51,6 +52,7 @@ export const Buildings = [{
     desc: 'Unlocks trade agreements',
     requirements: {
       gold: 50,
+      buildings: [4],
       restricted: true
     },
     effect: {
