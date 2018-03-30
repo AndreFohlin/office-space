@@ -22,7 +22,6 @@ export class BuildingComponent implements OnInit {
 
   private buildingService: BuildingService;
   private building: boolean;
-  private built: boolean;
 
 
   constructor(buildingService: BuildingService) {
@@ -33,7 +32,6 @@ export class BuildingComponent implements OnInit {
 
   onBuild() {
     this.buildingService.build(this.template);
-    this.built = true;
   }
 
   requirementsMet() {

@@ -1,4 +1,4 @@
-<div class="card build-option building" [ngClass]="{'built': built}"  id="building-{{template.id}}">
+<div class="card build-option building" [ngClass]="{'built': buildingService.hasBuilding(template.id)}"  id="building-{{template.id}}">
   <div class="card-body">
     <h5 class="card-title">{{template.name}} <span class="badge badge-warning">{{template.requirements.gold}}g</span></h5>
     <p class="card-text">
