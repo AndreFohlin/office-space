@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div class="card build-option building" id="building-{{template.id}}">
+=======
+<div class="card build-option building" [ngClass]="{'built': buildingService.hasBuilding(template.id)}"  id="building-{{template.id}}">
+>>>>>>> a75c04fea69a72007d7876323fa10e745f4b8865
   <div class="card-body">
     <h5 class="card-title">{{template.name}}</h5>
     <p class="card-text">
