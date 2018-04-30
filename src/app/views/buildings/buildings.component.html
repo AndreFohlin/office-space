@@ -1,9 +1,24 @@
-<div class="col-sm-12">
+<div class="col-lg-12">
+    <div class="buildings-container">
+      <h4>Owned buildings</h4>
+      <div class="row">
+        <div *ngFor="let building of ownedBuildings">
+          <app-building [template]="building"></app-building>
+        </div>
+      </div>
+    </div>
   <div class="buildings-container">
     <h4>Buildings</h4>
     <div class="row">
-      <div *ngFor="let building of buildings">
-        <app-building [template]="building"></app-building>
+      <div class="col-sm-12">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let b of buildings">
+            <p>{{b.name}}</p>
+            <p>{{b.desc}}</p>
+            <span class="badge badge-warning">{{b.requirements.gold}}g</span>
+            <button type="button" class="btn btn-primary" *ngIf="requirementsMet(b)" (click)="onBuild(b)">Build</button>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -23,6 +38,4 @@
       </div>
     </div>
   </div>
-  
-  
 </div>

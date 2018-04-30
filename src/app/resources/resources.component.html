@@ -4,16 +4,12 @@
     <button type="button" class="btn btn-primary" (click)="addGold()">50 Gold</button>
     <button type="button" class="btn btn-primary" (click)="addGrog()">50 Grog</button>
 
+    <p>💰 Gold: {{resources.getGold()}} <small>(income/sec: {{resources.goldPerSec}})</small></p>
     <div class="card-text border">
-      <p>💰 Gold: {{resources.getGold()}} <small>(income/sec: {{resources.goldPerSec}})</small></p>
-      <p>🍺 Grog: {{resources.getGrog()}}/{{resources.grogLimit}} <small>(income/sec: {{resources.grogPerSec}})</small></p>
-
-      <div *ngIf="buildingService.hasBuilding(5)"> <!-- Trading house -->
-        Other:
-        <p *ngFor="let resource of resources.miscResources">
-            {{resource.name}}: {{resource.amount}}
-        </p>
-      </div>
+      <p>Storage limit {{resources.usedStorage}} / {{resources.totalStorage}}</p>
+      <p *ngFor="let resource of resources.resources">
+          {{resource.name}}: {{resource.amount}}
+      </p>
     </div>
   </div>
 </div>

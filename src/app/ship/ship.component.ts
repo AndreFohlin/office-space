@@ -25,7 +25,7 @@ export class ShipComponent {
 
 
   sendShip(){
-    if(this.resources.getGrog() >= this.sailGrogPrice) {
+    /*if(this.resources.getGrog() >= this.sailGrogPrice) {
       this.resources.addGrog(-this.sailGrogPrice);
       this.animateTo(100, this.sailTime);
       this.sailing = true;
@@ -33,7 +33,7 @@ export class ShipComponent {
       setTimeout(()=> {
         this.shipCameBack();
       }, this.sailTime * 1000);
-    }
+    }*/
   }
 
   shipCameBack() {

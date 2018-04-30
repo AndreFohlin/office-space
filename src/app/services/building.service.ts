@@ -14,7 +14,7 @@ export class BuildingService {
   private jobService: JobService;
   private ownedBuildings: number[];
   private unlockedFeatures: any[];
-  private buildingTime: number = 2;
+  private buildingTime: number = 0.5;
   
   private notificationService: NotificationService;
 
@@ -36,9 +36,9 @@ export class BuildingService {
 
             if (buildTemplate.effect) {
               if (buildTemplate.effect.gold) this.resourceService.goldPerSec += buildTemplate.effect.gold;
-              if (buildTemplate.effect.grog) this.resourceService.grogPerSec += buildTemplate.effect.grog;
+              //if (buildTemplate.effect.grog) this.resourceService.grogPerSec += buildTemplate.effect.grog;
               //if (buildTemplate.effect.goldLimit) this.resourceService.goldLimit += buildTemplate.effect.goldLimit;
-              if (buildTemplate.effect.grogLimit) this.resourceService.grogLimit += buildTemplate.effect.grogLimit;
+              //if (buildTemplate.effect.grogLimit) this.resourceService.grogLimit += buildTemplate.effect.grogLimit;
             }
 
             if(buildTemplate.unlocks) {
@@ -54,7 +54,7 @@ export class BuildingService {
                 });
               });
             }
-            this.ownedBuildings.push(buildTemplate.id);
+            this.ownedBuildings.push(buildTemplate);
           });
         }
       }
@@ -96,6 +96,10 @@ export class BuildingService {
 
   getAllBuildings(){
     return Buildings;
+  }
+
+  getAllOwnedBuildings() {
+    return this.ownedBuildings;
   }
 
   hasFeature(feature): boolean {

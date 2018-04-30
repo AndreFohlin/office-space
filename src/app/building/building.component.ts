@@ -9,6 +9,7 @@ import {
 import {
   BuildingService
 } from '../services/building.service';
+import { ResourceService } from '../resources/resource.service';
 
 @Component({
   selector: 'app-building',
@@ -21,37 +22,76 @@ export class BuildingComponent implements OnInit {
   @Input() disabled: boolean;
 
   private buildingService: BuildingService;
+  private resourceService: ResourceService;
   private building: boolean;
   private built: boolean;
+  private cycleMs: number = 1000;
+  private currentInterval: any;
+  public active: boolean;
 
-
-  constructor(buildingService: BuildingService) {
+  constructor(buildingService: BuildingService, resourceService: ResourceService) {
     this.buildingService = buildingService;
+    this.resourceService = resourceService;
   }
 
-  ngOnInit() {}
+  activate() {
+    this.active = true;
 
-  onBuild() {
-    this.buildingService.build(this.template);
-    this.built = true;
+    this.animateTo(100, this.cycleMs*0.001);
+    this.currentInterval = setInterval(()=>{
+      this.update();
+    }, this.cycleMs);
   }
 
-  requirementsMet() {
-    return this.buildingService.canBuild(this.template);
+  clicked(val){
+    val ? this.activate() : this.deactivate();
   }
 
-  getRequirementText() {
-    let buildingNames = [];
-    if (this.template.requirements.buildings) {
+  update() {
+    
 
-      this.template.requirements.buildings.forEach(element => {
-        let building = Buildings.find((b => element === b.id));
-        if (!this.buildingService.hasBuilding(building.id)) {
-          buildingNames.push(' '+ building.name);
-        }
-      });
+    
+
+    this.animateTo(100, this.cycleMs*0.001);
+    this.resourceService.addResource(this.template.effect.resource, this.template.effect.increment);
+  
+    
+  }
+
+  deactivate() {
+    this.active = false;
+    if(this.currentInterval){
+      clearInterval(this.currentInterval);
     }
-    return buildingNames.length ? 'Requires ' + buildingNames : '';
   }
+
+  ngOnInit() {
+  }
+
+  ngAfterViewInit(){
+    //this.animateTo(100, this.cycleMs*0.001);
+  }
+  
+  animateTo(percent:number, time:number){
+    console.log('animate to' ,time);
+    let obj = document.getElementsByClassName('fake-progress')[0];
+    console.log(obj);
+    if(obj){
+      obj.animate(
+        [{
+          transform: 'translateX(0)'
+        }, {
+          transform: 'translateX(100)'
+        }],
+        time);
+      //let style = ('width '+time+'s linear');
+      //obj.style.webkitTransition = style;
+      //obj.style.width = percent+"%";
+    }
+  }
+
+
+
+  
 
 }

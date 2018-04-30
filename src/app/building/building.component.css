@@ -11,3 +11,10 @@
     color: red;
     font-style: italic;
 }
+
+.fake-progress {
+    background-color:blue;
+    height: 1rem;
+    width:20px;
+    position: absolute;
+}

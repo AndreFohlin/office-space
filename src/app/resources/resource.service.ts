@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { Resources } from './resources';
+import { ResourceType, Resources } from './resources';
 
 @Injectable()
 export class ResourceService {
 
+  private _usedStorage: number = 0;
+  public totalStorage: number = 100;
+  
   public goldPerSec: number = 0;
   public grogPerSec: number = 0;
 
   public goldObservable: Observable<number>;
   private goldSubject: Subject<number>;
 
-  public grogObservable: Observable<number>;
-  private grogSubject: Subject<number>;
-
   private gold: number = 0;
   private grog: number = 0;
 
-  public grogLimit: number = 10;
-
   //Temporary
-  public miscResources: any[] = [];
+  public resources: any[] = [];
 
 
   constructor() {
@@ -29,14 +27,9 @@ export class ResourceService {
     this.goldSubject = new Subject<number>();
     this.goldObservable = this.goldSubject.asObservable();
 
-    this.grogSubject = new Subject<number>();
-    this.grogObservable = this.grogSubject.asObservable();
-
-    Resources.forEach( resourceType => {
-      this.miscResources.push({name: resourceType.name, amount: 0});
+    Resources.forEach( r => {
+      this.resources.push( Object.assign({ amount: 0}, r) );
     });
-
-    
 
     setInterval(()=>{
       this.updateResources();
@@ -45,15 +38,16 @@ export class ResourceService {
 
   private updateResources() {
     this.addGold(this.goldPerSec);
-    this.addGrog(this.grogPerSec);
+  }
+
+  get usedStorage(): number {
+    let total = 0;
+    this.resources.forEach( r => total+=r.amount );
+    return total;
   }
 
   addGold(g: number) {
     this.gold += g;
-    //if(Math.min(this.gold, this.goldLimit) == this.goldLimit) {
-    //  this.gold = this.goldLimit;
-    //}
-    
     this.goldSubject.next(this.gold);
   }
 
@@ -66,27 +60,18 @@ export class ResourceService {
     this.goldSubject.next(this.gold);
   }
 
-  addGrog(g: number) {
-    this.grog += g;
-    if(Math.min(this.grog, this.grogLimit) == this.grogLimit) {
-      this.grog = this.grogLimit;
-    }
-    this.grogSubject.next(this.grog);
+  addResource( type: ResourceType, amount: number) {
+    let res = this.resources.find( r => r.type === type );
+    let availableAmountToAdd = Math.min(amount, this.totalStorage-this.usedStorage);
+    res.amount += availableAmountToAdd;
   }
 
   hasGold(gold:number){
     return (this.gold >= gold);
   }
 
-  hasGrog(grog:number){
-    return (this.grog >= grog);
-  }
-
   getGold(): number {
     return this.gold;
   }
 
-  getGrog(): number {
-    return this.grog;
-  }
 }

@@ -26,8 +26,4 @@ export class ResourcesComponent implements OnInit {
     this.resources.addGold(50);
   }
 
-  addGrog() {
-    this.resources.addGrog(50);
-  }
-
 }

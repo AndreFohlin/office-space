@@ -21,6 +21,7 @@ import {
 } from '@angular/core/src/metadata/lifecycle_hooks';
 import { ShipService } from '../../services/ship.service';
 import { NotificationService } from '../../services/notification.service';
+import { Buildings } from '../../building/buildings/building-templates';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class BuildingsComponent implements OnInit {
   private resources: ResourceService;
   private jobs: JobService;
   private buildings: any;
+  private ownedBuildings: any;
   private buildingService: BuildingService;
   private shipService: ShipService;
   private destinationService: DestinationService;
@@ -45,12 +47,11 @@ export class BuildingsComponent implements OnInit {
     this.shipService = shipService;
     this.destinationService = destinationService;
     this.notificationService = notificationService;
-
-    
   }
 
   ngOnInit() {
     this.buildings = this.buildingService.getAllBuildings();
+    this.ownedBuildings = this.buildingService.getAllOwnedBuildings();
 
     this.resources.goldObservable.subscribe(this.onGoldUpdated.bind(this) );
   }
@@ -70,4 +71,27 @@ export class BuildingsComponent implements OnInit {
       });
     }
   }
+
+  getRequirementText(template: any) {
+    let buildingNames = [];
+    if (template.requirements.buildings) {
+
+      template.requirements.buildings.forEach(element => {
+        let building = Buildings.find((b => element === b.id));
+        if (!this.buildingService.hasBuilding(building.id)) {
+          buildingNames.push(' '+ building.name);
+        }
+      });
+    }
+    return buildingNames.length ? 'Requires ' + buildingNames : '';
+  }
+
+  onBuild(template: any) {
+    this.buildingService.build(template);
+  }
+
+  requirementsMet(template: any) {
+    return this.buildingService.canBuild(template);
+  }
+
 }

@@ -1,3 +1,5 @@
+import { ResourceType } from '../../resources/resources'
+
 export const Buildings = [{
     id: 1,
     name: 'Brewery',
@@ -7,9 +9,10 @@ export const Buildings = [{
       restricted: false
     },
     effect: {
-      grog: 1
+      resource: ResourceType.GROG,
+      increment: 1
     }
-  },
+}/*,
   {
     id: 2,
     name: 'Grog warehouse',
@@ -58,5 +61,5 @@ export const Buildings = [{
     effect: {
     },
     unlocks: [{name: 'Trade agreements', description: 'Discovered locations can now be traded with using your ships.'}]
-  }
+  }*/
 ];
