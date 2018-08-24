@@ -1,18 +1,14 @@
-<<<<<<< HEAD
-<div class="card build-option building" id="building-{{template.id}}">
-=======
+
 <div class="card build-option building" [ngClass]="{'built': buildingService.hasBuilding(template.id)}"  id="building-{{template.id}}">
->>>>>>> a75c04fea69a72007d7876323fa10e745f4b8865
   <div class="card-body">
     <h5 class="card-title">{{template.name}}</h5>
     <p class="card-text">
       {{template.desc}}<br>
-      <label for="active-checkbox">Active</label> <input type="checkbox" id="active-checkbox" (change)="clicked($event.target.checked)">
+      <label for="active-checkbox-{{template.id}}">Active</label> <input type="checkbox" id="active-checkbox-{{template.id}}" (change)="clicked($event.target.checked)">
     </p>
     <div class="progress">
-      <div id="building-{{template.id}}" class="progress-bar progress-bar-striped" style="width:0%" role="progressbar" aria-valuenow="0"
+      <div #progressbar class="progress-bar progress-bar-striped" style="width:0%" role="progressbar" aria-valuenow="0"
         aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="fake-progress"></div>
     </div>
   </div>
 </div>

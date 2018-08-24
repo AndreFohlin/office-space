@@ -12,7 +12,7 @@ export const Buildings = [{
       resource: ResourceType.GROG,
       increment: 1
     }
-}/*,
+},
   {
     id: 2,
     name: 'Grog warehouse',
@@ -61,5 +61,5 @@ export const Buildings = [{
     effect: {
     },
     unlocks: [{name: 'Trade agreements', description: 'Discovered locations can now be traded with using your ships.'}]
-  }*/
+  }
 ];

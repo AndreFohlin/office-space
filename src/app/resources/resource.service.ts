@@ -15,7 +15,7 @@ export class ResourceService {
   public goldObservable: Observable<number>;
   private goldSubject: Subject<number>;
 
-  private gold: number = 0;
+  private gold: number = 190;
   private grog: number = 0;
 
   //Temporary

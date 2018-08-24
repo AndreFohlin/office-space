@@ -12,9 +12,15 @@
     font-style: italic;
 }
 
-.fake-progress {
-    background-color:blue;
-    height: 1rem;
-    width:20px;
-    position: absolute;
+.notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}
+
+@keyframes progress {
+    from {width: 0%;}
+    to {width: 100%;}
 }

@@ -1,11 +1,9 @@
 import {
   Component,
-  OnInit,
-  Input
+  ViewChild,
+  Input,
+  ElementRef
 } from '@angular/core';
-import {
-  Buildings
-} from './buildings/building-templates';
 import {
   BuildingService
 } from '../services/building.service';
@@ -16,8 +14,9 @@ import { ResourceService } from '../resources/resource.service';
   templateUrl: './building.component.html',
   styleUrls: ['./building.component.css'],
 })
-export class BuildingComponent implements OnInit {
+export class BuildingComponent {
 
+  @ViewChild('progressbar', {read: ElementRef}) progressBar: ElementRef;
   @Input() template: any;
   @Input() disabled: boolean;
 
@@ -25,9 +24,11 @@ export class BuildingComponent implements OnInit {
   private resourceService: ResourceService;
   private building: boolean;
   private built: boolean;
-  private cycleMs: number = 1000;
-  private currentInterval: any;
+  private cycleMs: number = 2000;
   public active: boolean;
+
+  private animCallback: Function;
+
 
   constructor(buildingService: BuildingService, resourceService: ResourceService) {
     this.buildingService = buildingService;
@@ -37,61 +38,24 @@ export class BuildingComponent implements OnInit {
   activate() {
     this.active = true;
 
-    this.animateTo(100, this.cycleMs*0.001);
-    this.currentInterval = setInterval(()=>{
-      this.update();
-    }, this.cycleMs);
+    this.progressBar.nativeElement.style.animation = 'progress '+this.cycleMs*0.001+'s linear infinite';
+    this.animCallback = () => this.update();
+    this.progressBar.nativeElement.addEventListener("animationiteration", this.animCallback);    
   }
 
+  update() {
+    this.resourceService.addResource(this.template.effect.resource, this.template.effect.increment);
+  }
+
+  
   clicked(val){
     val ? this.activate() : this.deactivate();
   }
 
-  update() {
-    
-
-    
-
-    this.animateTo(100, this.cycleMs*0.001);
-    this.resourceService.addResource(this.template.effect.resource, this.template.effect.increment);
-  
-    
-  }
-
   deactivate() {
     this.active = false;
-    if(this.currentInterval){
-      clearInterval(this.currentInterval);
-    }
+    this.progressBar.nativeElement.style.animationName = 'none';
+    this.progressBar.nativeElement.removeEventListener("animationiteration", this.animCallback);
   }
-
-  ngOnInit() {
-  }
-
-  ngAfterViewInit(){
-    //this.animateTo(100, this.cycleMs*0.001);
-  }
-  
-  animateTo(percent:number, time:number){
-    console.log('animate to' ,time);
-    let obj = document.getElementsByClassName('fake-progress')[0];
-    console.log(obj);
-    if(obj){
-      obj.animate(
-        [{
-          transform: 'translateX(0)'
-        }, {
-          transform: 'translateX(100)'
-        }],
-        time);
-      //let style = ('width '+time+'s linear');
-      //obj.style.webkitTransition = style;
-      //obj.style.width = percent+"%";
-    }
-  }
-
-
-
-  
 
 }
